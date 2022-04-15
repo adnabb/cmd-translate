@@ -1,6 +1,6 @@
 {
   "name": "cmd-translate",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "命令行翻译器",
   "bin": {
     "to": "dist/cli.js"
