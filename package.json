@@ -1,9 +1,9 @@
 {
   "name": "cmd-translate",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "命令行翻译器",
   "bin": {
-    "to": "dist/cli.js"
+    "t": "dist/cli.js"
   },
   "main": "dist/main.js",
   "scripts": {
