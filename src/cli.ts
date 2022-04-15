@@ -5,16 +5,13 @@ import { program } from 'commander';
 import { version } from '../package.json';
 import translate from './main'
 program
-  .version(version)
-  .name('to')
-  .option('-d --dest <string>', "choose the language you want to translate")
+  .version( version )
+  .name( 't' )
+  .requiredOption( '-l, --lang <string>', 'choose target language', 'zh' )
   .action((option) => {
-    const {args} = option
-    if (!args.length) {
-      giveDestExamples()
-    } else {
-      translate(option)
-    }
+    const { args } = option
+
+    args.length ? translate( option ) : giveDestExamples()
   });
 
 program.on('--help', () => {
@@ -22,23 +19,23 @@ program.on('--help', () => {
 });
 
 const giveDestExamples = () => {
-  console.info('-------------------');
-  console.info('Example:');
-  console.info('  $ to 你好');
-  console.info('  $ to hello -d zh');
-  console.info('-------------------');
-  console.info('-d 可用列表');
-  console.info({
-    en: '英文（默认）',
-    zh: '中文',
-    cht: '繁体中文',
-    yue: '粤语',
-    wyw: '文言文',
-    jp: '日语',
-    kor: '含义',
-    fra: '法语',
-    it: '意大利语',
-  });
+  console.info( '-------------------' )
+  console.info( 'Example:' )
+  console.info( '  $ t hello' )
+  console.info( '  $ t 你好 --lang en' )
+  console.info( '-------------------' )
+  console.info( '-l -lang 可用列表' )
+  console.info( {
+    '中文（默认）': 'zh',
+    '英文'    : 'en',
+    '繁体中文'  : 'cht',
+    '粤语'    : 'yue',
+    '文言文'   : 'wyw',
+    '日语'    : 'jp',
+    '含义'    : 'kor',
+    '法语'    : 'fra',
+    '意大利语'  : 'it'
+  } )
 }
 
 program.parse(process.argv);
